@@ -5,7 +5,7 @@
 [![Build Status](https://img.shields.io/github/workflow/status/Heg0Dmsk/docker-webhook/Build%20And%20Push%20Docker%20Images?style=flat-square&logoColor=white&logo=github%20actions)](https://github.com/Heg0Dmsk/docker-webhook)
 
 
-A modified version of [`TheCatLady's webhook docker container`](https://github.com/TheCatLady/docker-webhook) based upon [`webhook`](https://github.com/adnanh/webhook) containing additionally the docker cli and docker compose. This allows to execute docker commands on the host by exposing the docker socket as a volume ([Reference](https://tomgregory.com/running-docker-in-docker-on-windows/)) commands from inside the container.
+A modified version of [`TheCatLady's webhook docker container`](https://github.com/TheCatLady/docker-webhook) based upon [`webhook`](https://github.com/adnanh/webhook) containing additionally the docker cli and docker compose. Befoe using this conatiner, please inform yourself about the advantages and risks of executing docker commands inside a docker conatainer and access the docker host via the Docker socket, for example [here](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) or [here](https://tomgregory.com/running-docker-in-docker-on-windows/).
 
 ## Usage
 
