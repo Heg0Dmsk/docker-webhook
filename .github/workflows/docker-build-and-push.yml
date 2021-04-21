@@ -41,7 +41,7 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v2.3.0
         with:
-          images: heg0dmsk/webhook-docker
+          images: heg0dmsk/webhook-docker, ghcr.io/heg0dmsk/webhook-docker
           flavor: |
             latest=true
           tags: |
