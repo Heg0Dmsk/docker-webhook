@@ -5,13 +5,11 @@
 [![Build Status](https://img.shields.io/github/workflow/status/TheCatLady/docker-webhook/Build%20Docker%20Images?style=flat-square&logoColor=white&logo=github%20actions)](https://github.com/TheCatLady/docker-webhook)
 [![Become a GitHub Sponsor](https://img.shields.io/badge/github%20sponsors-help%20feed%20my%20cats!-ff69b4?style=flat-square&logo=github%20sponsors)](https://github.com/sponsors/TheCatLady)
 
-A lightweight, minimal [`webhook`](https://github.com/adnanh/webhook) container
+A modified version of [`TheCatLady's webhook docker container`](https://github.com/TheCatLady/docker-webhook) based upon [`webhook`](https://github.com/adnanh/webhook) containing additionally the docker cli and docker compose. This allows to execute docker commands on the host by exposing the docker socket as a volume ([Reference](https://tomgregory.com/running-docker-in-docker-on-windows/)) commands from inside the container.
 
 ## Usage
 
-Docker images are available from both [GitHub Container Registry (GHCR)](https://github.com/users/TheCatLady/packages/container/package/webhook) and [Docker Hub](https://hub.docker.com/r/thecatlady/webhook).
-
-If you would prefer to pull from GHCR, simply replace `thecatlady/webhook` with `ghcr.io/thecatlady/webhook` in the examples below.
+Docker images are available from [Docker Hub](https://hub.docker.com/r/heg0dmsk/webhook-docker).
 
 ### Docker Compose (recommended)
 
@@ -20,13 +18,14 @@ Add the following volume and service definitions to a `docker-compose.yml` file:
 ```yaml
 services:
   webhook:
-    image: thecatlady/webhook
+    image: heg0dmsk/webhook-docker
     container_name: webhook
-    command: -verbose -hooks=hooks.yml -hotreload
+    command: -verbose -hooks=hooks.json -hotreload
     environment:
       - TZ=America/New_York #optional
     volumes:
       - /path/to/appdata/config:/config:ro
+      - /var/run/docker.sock:/var/run/docker.sock # exposing the docker socket, needed to access the docker host
     ports:
       - 9000:9000
     restart: always
@@ -47,10 +46,11 @@ docker run -d \
   --name=webhook \
   -e TZ=America/New_York `#optional` \
   -v /path/to/appdata/config:/config:ro \
+  -v /var/run/docker.sock:/var/run/docker.sock `#exposing the docker socket, needed to access the docker host` \
   -p 9000:9000 \
   --restart always \
-  thecatlady/webhook \
-  -verbose -hooks=hooks.yml -hotreload
+  heg0dmsk/webhook-docker \
+  -verbose -hooks=hooks.json -hotreload
 ```
 
 ## Updating
@@ -74,7 +74,7 @@ Run the commands below, followed by your original `docker run` command:
 ```bash
 docker stop webhook
 docker rm webhook
-docker pull thecatlady/webhook
+docker pull heg0dmsk/webhook-docker
 docker image prune
 ```
 
@@ -85,7 +85,8 @@ The container image is configured using the following parameters passed at runti
 | Parameter                                      | Function                                                                                                                                                                                                                                                                                                                                              |
 | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `-e TZ=`                                       | [TZ database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) of system time zone; e.g., `America/New_York`                                                                                                                                                                                                                        |
-| `-v /path/to/appdata/config:/config:ro`        | Container data directory (mounted as read-only); your JSON/YAML hook definition file should be placed in this folder<br/>(Replace `/path/to/appdata/config` with the desired path on your host)                                                                                                                                                       |
+| `-v /path/to/appdata/config:/config:ro`        | Container data directory (mounted as read-only); your JSON/YAML hook definition file should be placed in this folder<br/>(Replace `/path/to/appdata/config` with the desired path on your host)
+| `-v /var/run/docker.sock:/var/run/docker.sock` | Exposing the docker socket, needed to access the docker host    |
 | `-p 9000:9000`                                 | Expose port `9000`<br/>(Necessary unless only accessing `webhook` via other containers in the same Docker network)                                                                                                                                                                                                                                    |
 | `--restart`                                    | Container [restart policy](https://docs.docker.com/engine/reference/run/#restart-policies---restart)<br/>(`always` or `unless-stopped` recommended)                                                                                                                                                                                                   |
 | `-verbose -hooks=/config/hooks.yml -hotreload` | [`webhook` parameters](https://github.com/adnanh/webhook/blob/master/docs/Webhook-Parameters.md); replace `hooks.yml` with the name of your JSON/YAML hook definition file, and add/modify/remove arguments to suit your needs<br/>(Can omit if using this exact configuration; otherwise, all parameters must be specified, not just those modified) |
@@ -93,9 +94,3 @@ The container image is configured using the following parameters passed at runti
 ## Configuring Hooks
 
 See [`adnanh/webhook`](https://github.com/adnanh/webhook) for documentation on how to define hooks.
-
-## How to Contribute
-
-Show your support by starring this project! &#x1F31F; Pull requests, bug reports, and feature requests are also welcome!
-
-You can also support me by [becoming a GitHub sponsor](https://github.com/sponsors/TheCatLady) or [making a one-time donation](https://github.com/sponsors/TheCatLady?frequency=one-time) &#x1F496;
