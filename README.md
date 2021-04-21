@@ -1,9 +1,9 @@
 # `webhook` &#9875;
 
-[![Image Size](https://img.shields.io/docker/image-size/thecatlady/webhook/latest?style=flat-square&logoColor=white&logo=docker)](https://hub.docker.com/r/thecatlady/webhook)
-[![Last Commit](https://img.shields.io/github/last-commit/TheCatLady/docker-webhook?style=flat-square&logoColor=white&logo=github)](https://github.com/TheCatLady/docker-webhook)
-[![Build Status](https://img.shields.io/github/workflow/status/TheCatLady/docker-webhook/Build%20Docker%20Images?style=flat-square&logoColor=white&logo=github%20actions)](https://github.com/TheCatLady/docker-webhook)
-[![Become a GitHub Sponsor](https://img.shields.io/badge/github%20sponsors-help%20feed%20my%20cats!-ff69b4?style=flat-square&logo=github%20sponsors)](https://github.com/sponsors/TheCatLady)
+[![Image Size](https://img.shields.io/docker/image-size/heg0dmsk/webhook-docker/latest?style=flat-square&logoColor=white&logo=docker)](https://hub.docker.com/r/heg0dmsk/webhook-docker)
+[![Last Commit](https://img.shields.io/github/last-commit/Heg0Dmsk/docker-webhook?style=flat-square&logoColor=white&logo=github)](https://github.com/Heg0Dmsk/docker-webhook)
+[![Build Status](https://img.shields.io/github/workflow/status/Heg0Dmsk/docker-webhook/Build%20Docker%20Images?style=flat-square&logoColor=white&logo=github%20actions)](https://github.com/Heg0Dmsk/docker-webhook)
+
 
 A modified version of [`TheCatLady's webhook docker container`](https://github.com/TheCatLady/docker-webhook) based upon [`webhook`](https://github.com/adnanh/webhook) containing additionally the docker cli and docker compose. This allows to execute docker commands on the host by exposing the docker socket as a volume ([Reference](https://tomgregory.com/running-docker-in-docker-on-windows/)) commands from inside the container.
 
