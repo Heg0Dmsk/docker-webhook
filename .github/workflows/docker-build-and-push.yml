@@ -41,7 +41,7 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v2.3.0
         with:
-          images: heg0dmsk/webhook-docker, docker.pkg.github.com/heg0dmsk/docker-webhook/webhook-docker
+          images: heg0dmsk/webhook-docker, ghcr.io/heg0dmsk/webhook-docker/webhook-docker
           flavor: |
             latest=true
           tags: |
@@ -56,11 +56,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - 
-        name: Log in to GitHub Docker Package Registry
+        name: Log in to GitHub Package Registry
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v1
         with:
-          registry: docker.pkg.github.com
+          registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}      
       - 
