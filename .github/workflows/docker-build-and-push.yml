@@ -47,7 +47,8 @@ jobs:
           tags: |
             ${{ steps.webhook.outputs.version }}
           labels: |
-            org.opencontainers.image.version=${{ steps.webhook.outputs.version }}          
+            org.opencontainers.image.version=${{ steps.webhook.outputs.version }}
+            org.opencontainers.image.source=https://github.com/heg0dmsk/webhook-docker
       - 
         name: Login to DockerHub
         if: github.event_name != 'pull_request'
