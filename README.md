@@ -9,7 +9,7 @@ A modified version of [`TheCatLady's webhook`](https://github.com/TheCatLady/doc
 
 ## Usage
 
-Docker images are available from [Docker Hub](https://hub.docker.com/r/heg0dmsk/webhook-docker) and [GitHub Container Registry (GHCR)](https://github.com/users/heg0dmsk/packages/container/package).
+Docker images are available from [Docker Hub](https://hub.docker.com/r/heg0dmsk/webhook-docker) and [GitHub Container Registry (GHCR)](https://github.com/users/heg0dmsk/packages/container/package/webhook-docker).
 
 ### Docker Compose (recommended)
 
