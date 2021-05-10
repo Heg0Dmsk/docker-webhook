@@ -39,7 +39,7 @@ jobs:
       -           
         name: Set Docker image metadata
         id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v2.4.0
+        uses: crazy-max/ghaction-docker-meta@v2.5.0
         with:
           images: heg0dmsk/webhook-docker, ghcr.io/heg0dmsk/webhook-docker
           flavor: |
