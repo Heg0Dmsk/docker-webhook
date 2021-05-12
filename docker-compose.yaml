@@ -6,7 +6,7 @@ services:
     container_name: webhook
     command: -verbose -hooks=hooks.json -hotreload
     volumes:
-      - ./sampleHook:/config:ro
+      - ./sample_hook:/config:ro
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - '9001:9000'
