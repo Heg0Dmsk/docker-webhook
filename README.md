@@ -12,27 +12,13 @@ A modified version of [`TheCatLady's webhook`](https://github.com/TheCatLady/doc
 
 ## Contents
 - [How to Use](#how-to-use)
-  - [Docker Compose (recommended)](#docker-compose-(recommended))
+  - [Docker Compose (recommended)](#docker-compose-"(recommended)")
   - [Docker CLI](#docker-cli)
 - [Updating](#updating)
-  - [GitHub Tools and Management](#github-tools-and-management)
-  - [Collection of Actions](#collection-of-actions)
-  - [Utility](#utility)
-  - [Static Analysis](#static-analysis)
-  - [Dynamic Analysis](#dynamic-analysis)
-  - [Monitoring](#monitoring)
-  - [Pull Requests](#pull-requests)
-  - [GitHub Pages](#github-pages)
-  - [Notifications and Messages](#notifications-and-messages)
-  - [Deployment](#deployment)
-  - [External Services](#external-services)
-  - [Frontend Tools](#frontend-tools)
-  - [Machine Learning Ops](#machine-learning-ops)
-  - [Build](#build)
-  - [Database](#database)
-  - [Localization](#localization)
-  - [Cheat Sheet](#cheat-sheet)
-- [Tutorials](#tutorials)
+  - [Docker Compose (recommended)](#docker-compose-(recommended))
+  - [Docker CLI](#docker-cli)
+  - [Parameters](#parameters)
+- [Configuring Hooks](#configuring-hooks)
 
 ## How to use
 
