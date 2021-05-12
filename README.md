@@ -11,21 +11,21 @@
 A modified version of [`TheCatLady's webhook`](https://github.com/TheCatLady/docker-webhook) docker container based upon [`adnanh's webhook`](https://github.com/adnanh/webhook),   additionally containing the docker cli and docker compose. Befoe using this conatiner, please inform yourself about the advantages and risks of executing docker commands inside a docker conatainer and access the docker host via the Docker socket, for example [here](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) or [here](https://tomgregory.com/running-docker-in-docker-on-windows/).
 
 ## Contents
-- [1 How to Use](#1-how-to-use)
-  - [Docker Compose (recommended)](#how-to-use-docker-compose")
-  - [Docker CLI](#docker-cli)
+- [How to Use](#how-to-use)
+  - [Docker Compose](#how_to_use_docker_compose)
+  - [Docker CLI](#how_to_use_docker_cli)
 - [Updating](#updating)
-  - [Docker Compose (recommended)](#docker-compose-(recommended))
-  - [Docker CLI](#docker-cli)
+  - [Docker Compose](#updating_docker_compose)
+  - [Docker CLI](#updating_docker_cli)
   - [Parameters](#parameters)
 - [Configuring Hooks](#configuring-hooks)
 
-## 1 How to use
+## How to use
 
 Docker images are available from [Docker Hub](https://hub.docker.com/r/heg0dmsk/webhook-docker) and [GitHub Container Registry (GHCR)](https://github.com/users/heg0dmsk/packages/container/package/webhook-docker).
 
-<a name="how-to-use-docker-compose"></a>
-### Docker Compose (recommended) {#how-to-use-docker-compose}
+<a name="how_to_use_docker_compose"></a> 
+### Docker Compose (recommended) 
 
 Add the following volume and service definitions to a `docker-compose.yml` file:
 
@@ -51,6 +51,7 @@ Then, run the following command from the directory containing your `docker-compo
 docker-compose up -d
 ```
 
+<a name="how_to_use_docker_cli"></a> 
 ### Docker CLI
 
 Run the following command to create the container:
@@ -71,6 +72,7 @@ docker run -d \
 
 The process to update the container when a new image is available is dependent on how you set it up initially.
 
+<a name="updating_docker_compose"></a>
 ### Docker Compose
 
 Run the following commands from the directory containing your `docker-compose.yml` file:
@@ -81,6 +83,7 @@ docker-compose up -d
 docker image prune
 ```
 
+<a name="updating_docker_cli"></a> 
 ### Docker CLI
 
 Run the commands below, followed by your original `docker run` command:
