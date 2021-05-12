@@ -1,0 +1,8 @@
+[
+	{
+		"id": "test",
+		"execute-command": "echo Hello World ",
+		"command-working-directory": "./",
+		"response-message": "Redeploying dashboard website!"
+	}
+]
