@@ -24,6 +24,7 @@ A modified version of [`TheCatLady's webhook`](https://github.com/TheCatLady/doc
 
 Docker images are available from [Docker Hub](https://hub.docker.com/r/heg0dmsk/webhook-docker) and [GitHub Container Registry (GHCR)](https://github.com/users/heg0dmsk/packages/container/package/webhook-docker).
 
+<a name="how-to-use-docker-compose"></a>
 ### Docker Compose (recommended) {#how-to-use-docker-compose}
 
 Add the following volume and service definitions to a `docker-compose.yml` file:
