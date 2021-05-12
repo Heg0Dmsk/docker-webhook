@@ -10,23 +10,23 @@
 
 A modified version of [`TheCatLady's webhook`](https://github.com/TheCatLady/docker-webhook) docker container based upon [`adnanh's webhook`](https://github.com/adnanh/webhook),   additionally containing the docker cli and docker compose. Befoe using this conatiner, please inform yourself about the advantages and risks of executing docker commands inside a docker conatainer and access the docker host via the Docker socket, for example [here](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) or [here](https://tomgregory.com/running-docker-in-docker-on-windows/).
 
-## Content
+# Content
 - [How to Use](#how_to_use)
   - [Docker Compose](#how_to_use_docker_compose)
   - [Docker CLI](#how_to_use_docker_cli)
 - [Updating](#updating)
   - [Docker Compose](#updating_docker_compose)
   - [Docker CLI](#updating_docker_cli)
-  - [Parameters](#parameters)
+- [Parameters](#parameters)
 - [Configuring Hooks](#configuring_hooks)
 
 <a name="how_to_use"></a> 
-## How to use
+# How to use
 
 Docker images are available from [Docker Hub](https://hub.docker.com/r/heg0dmsk/webhook-docker) and [GitHub Container Registry (GHCR)](https://github.com/users/heg0dmsk/packages/container/package/webhook-docker).
 
 <a name="how_to_use_docker_compose"></a> 
-### Docker Compose (recommended) 
+## Docker Compose (recommended) 
 
 Add the following volume and service definitions to a `docker-compose.yml` file:
 
@@ -55,7 +55,7 @@ docker-compose up -d
 ```
 
 <a name="how_to_use_docker_cli"></a> 
-### Docker CLI
+## Docker CLI
 
 Run the following command to create the container:
 
@@ -72,12 +72,12 @@ docker run -d \
 ```
 
 <a name="updating"></a> 
-## Updating
+# Updating
 
 The process to update the container when a new image is available is dependent on how you set it up initially.
 
 <a name="updating_docker_compose"></a>
-### Docker Compose
+## Docker Compose
 
 Run the following commands from the directory containing your `docker-compose.yml` file:
 
@@ -88,7 +88,7 @@ docker image prune
 ```
 
 <a name="updating_docker_cli"></a> 
-### Docker CLI
+## Docker CLI
 
 Run the commands below, followed by your original `docker run` command:
 
@@ -100,7 +100,7 @@ docker image prune
 ```
 
 <a name="parameters"></a> 
-## Parameters
+# Parameters
 
 The container image is configured using the following parameters passed at runtime:
 
@@ -114,6 +114,6 @@ The container image is configured using the following parameters passed at runti
 | `-verbose -hooks=/config/hooks.yml -hotreload` | [`webhook` parameters](https://github.com/adnanh/webhook/blob/master/docs/Webhook-Parameters.md); replace `hooks.yml` with the name of your JSON/YAML hook definition file, and add/modify/remove arguments to suit your needs<br/>(Can omit if using this exact configuration; otherwise, all parameters must be specified, not just those modified) |
 
 <a name="configuring_hooks"></a> 
-## Configuring Hooks
+# Configuring Hooks
 
 See [`adnanh/webhook`](https://github.com/adnanh/webhook) for documentation on how to define hooks.
