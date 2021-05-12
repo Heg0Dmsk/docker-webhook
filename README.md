@@ -11,15 +11,16 @@
 A modified version of [`TheCatLady's webhook`](https://github.com/TheCatLady/docker-webhook) docker container based upon [`adnanh's webhook`](https://github.com/adnanh/webhook),   additionally containing the docker cli and docker compose. Befoe using this conatiner, please inform yourself about the advantages and risks of executing docker commands inside a docker conatainer and access the docker host via the Docker socket, for example [here](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) or [here](https://tomgregory.com/running-docker-in-docker-on-windows/).
 
 ## Contents
-- [How to Use](#how-to-use)
+- [How to Use](#how_to_use)
   - [Docker Compose](#how_to_use_docker_compose)
   - [Docker CLI](#how_to_use_docker_cli)
 - [Updating](#updating)
   - [Docker Compose](#updating_docker_compose)
   - [Docker CLI](#updating_docker_cli)
   - [Parameters](#parameters)
-- [Configuring Hooks](#configuring-hooks)
+- [Configuring Hooks](#configuring_hooks)
 
+<a name="how_to_use"></a> 
 ## How to use
 
 Docker images are available from [Docker Hub](https://hub.docker.com/r/heg0dmsk/webhook-docker) and [GitHub Container Registry (GHCR)](https://github.com/users/heg0dmsk/packages/container/package/webhook-docker).
@@ -36,10 +37,12 @@ services:
     container_name: webhook
     command: -verbose -hooks=hooks.json -hotreload
     environment:
-      - TZ=America/New_York #optional
+      # optional
+      - TZ=America/New_York 
     volumes:
       - /path/to/appdata/config:/config:ro
-      - /var/run/docker.sock:/var/run/docker.sock # exposing the docker socket, needed to access the docker host
+      # exposing the docker socket, needed to access the docker host
+      - /var/run/docker.sock:/var/run/docker.sock 
     ports:
       - 9000:9000
     restart: always
@@ -68,6 +71,7 @@ docker run -d \
   -verbose -hooks=hooks.json -hotreload
 ```
 
+<a name="updating"></a> 
 ## Updating
 
 The process to update the container when a new image is available is dependent on how you set it up initially.
@@ -95,6 +99,7 @@ docker pull heg0dmsk/webhook-docker
 docker image prune
 ```
 
+<a name="parameters"></a> 
 ## Parameters
 
 The container image is configured using the following parameters passed at runtime:
@@ -108,6 +113,7 @@ The container image is configured using the following parameters passed at runti
 | `--restart`                                    | Container [restart policy](https://docs.docker.com/engine/reference/run/#restart-policies---restart)<br/>(`always` or `unless-stopped` recommended)                                                                                                                                                                                                   |
 | `-verbose -hooks=/config/hooks.yml -hotreload` | [`webhook` parameters](https://github.com/adnanh/webhook/blob/master/docs/Webhook-Parameters.md); replace `hooks.yml` with the name of your JSON/YAML hook definition file, and add/modify/remove arguments to suit your needs<br/>(Can omit if using this exact configuration; otherwise, all parameters must be specified, not just those modified) |
 
+<a name="configuring_hooks"></a> 
 ## Configuring Hooks
 
 See [`adnanh/webhook`](https://github.com/adnanh/webhook) for documentation on how to define hooks.
