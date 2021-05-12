@@ -8,9 +8,11 @@ RUN         curl -#L -o webhook.tar.gz https://api.github.com/repos/adnanh/webho
             go build -ldflags="-s -w" -o /usr/local/bin/webhook
 
 FROM        alpine:3.13.5
-RUN 		apk update && apk add --no-cache docker-cli && \
-            apk add --no-cache docker-compose && \
-            apk add --update --no-cache curl tini tzdata     
+RUN 		apk update && \
+            apk add docker-cli && \
+            apk add docker-compose && \
+            apk add --update curl tini tzdata && \
+            rm -rf /var/cache/apk/*     
 COPY        --from=BUILD_IMAGE /usr/local/bin/webhook /usr/local/bin/webhook
 WORKDIR     /config
 EXPOSE      9000
