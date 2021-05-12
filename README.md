@@ -10,7 +10,7 @@
 
 A modified version of [`TheCatLady's webhook`](https://github.com/TheCatLady/docker-webhook) docker container based upon [`adnanh's webhook`](https://github.com/adnanh/webhook),   additionally containing the docker cli and docker compose. Befoe using this conatiner, please inform yourself about the advantages and risks of executing docker commands inside a docker conatainer and access the docker host via the Docker socket, for example [here](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) or [here](https://tomgregory.com/running-docker-in-docker-on-windows/).
 
-## Contents
+## Content
 - [How to Use](#how_to_use)
   - [Docker Compose](#how_to_use_docker_compose)
   - [Docker CLI](#how_to_use_docker_cli)
