@@ -20,6 +20,6 @@ jobs:
       uses: peter-evans/dockerhub-description@v2.4.2
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ DOCKERHUB_PASSWORD }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
         repository: heg0dmsk/webhook-docker
         short-description: ${{ github.event.repository.description }}
