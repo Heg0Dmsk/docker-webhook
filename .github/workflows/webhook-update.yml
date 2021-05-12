@@ -4,8 +4,14 @@ on:
   push:
     branches:
       - main
-  schedule:
-    - cron: "0 0 * * *"
+    paths:
+      - Dockerfile
+      - webhook.version
+      - .github/workflows/docker-build-and-push.yml
+      - .github/workflows/webhook-update.yml
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
