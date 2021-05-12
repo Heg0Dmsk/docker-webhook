@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - Dockerfile
+      - webhook.version
+      - .github/workflows/docker-build-and-push.yml
   pull_request:
     branches:
       - main
