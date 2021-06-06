@@ -3,10 +3,10 @@ version: '3.7'
 services:
   webhook:
     build: .
-    container_name: webhook
+    container_name: webhookDevelopment
     command: -verbose -hooks=hooks.json -hotreload
     volumes:
-      - ./sample_hook:/config:ro
+      - ./development:/config:ro
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - '9001:9000'

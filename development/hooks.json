@@ -3,6 +3,6 @@
 		"id": "test",
 		"execute-command": "echo Hello World ",
 		"command-working-directory": "./",
-		"response-message": "Redeploying dashboard website!"
+		"response-message": "Succes! http://localhost:9001/hooks/test is available"
 	}
 ]
