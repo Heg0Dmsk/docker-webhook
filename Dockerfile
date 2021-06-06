@@ -5,17 +5,17 @@ COPY        webhook.version .
 RUN         curl -#L -o webhook.tar.gz https://api.github.com/repos/adnanh/webhook/tarball/$(cat webhook.version) && \
             tar -xzf webhook.tar.gz --strip 1 &&  \
             go get -d && \
-            go build -ldflags="-s -w" -o /usr/local/bin/webhook
+            go build -ldflags="-s -w" -o /usr/local/bin/webhook && \
+            apk del --purge build-deps && \
+            rm -rf /var/cache/apk/* && \
+            rm -rf /go
 
 FROM        alpine:3.13.5
-RUN 		apk update && \
-            apk add docker-cli && \
-            apk add docker-compose && \
-            apk add --update curl tini tzdata && \
-            rm -rf /var/cache/apk/*     
+RUN         apk add --update --no-cache docker-cli docker-compose
 COPY        --from=BUILD_IMAGE /usr/local/bin/webhook /usr/local/bin/webhook
 WORKDIR     /config
+
 EXPOSE      9000
 HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:9000/ || exit 1
-ENTRYPOINT  ["/sbin/tini", "--", "/usr/local/bin/webhook"]
-CMD         ["-verbose", "-hotreload", "-hooks=hooks.yml"]
+ENTRYPOINT  ["/usr/local/bin/webhook"]
+CMD         ["-verbose", "-hotreload", "-hooks=hooks.json"]
