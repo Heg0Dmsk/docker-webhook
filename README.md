@@ -36,9 +36,6 @@ services:
     image: heg0dmsk/webhook-docker
     container_name: webhook
     command: -verbose -hooks=hooks.json -hotreload
-    environment:
-      # optional
-      - TZ=America/New_York 
     volumes:
       - /path/to/appdata/config:/config:ro
       # exposing the docker socket, needed to access the docker host
@@ -62,7 +59,6 @@ Run the following command to create the container:
 ```bash
 docker run -d \
   --name=webhook \
-  -e TZ=America/New_York `#optional` \
   -v /path/to/appdata/config:/config:ro \
   -v /var/run/docker.sock:/var/run/docker.sock `#exposing the docker socket, needed to access the docker host` \
   -p 9000:9000 \
@@ -106,12 +102,11 @@ The container image is configured using the following parameters passed at runti
 
 | Parameter                                      | Function                                                                                                                                                                                                                                                                                                                                              |
 | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `-e TZ=`                                       | [TZ database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) of system time zone; e.g., `America/New_York`                                                                                                                                                                                                                        |
 | `-v /path/to/appdata/config:/config:ro`        | Container data directory (mounted as read-only); your JSON/YAML hook definition file should be placed in this folder<br/>(Replace `/path/to/appdata/config` with the desired path on your host)
 | `-v /var/run/docker.sock:/var/run/docker.sock` | Exposing the docker socket, needed to access the docker host    |
 | `-p 9000:9000`                                 | Expose port `9000`<br/>(Necessary unless only accessing `webhook` via other containers in the same Docker network)                                                                                                                                                                                                                                    |
 | `--restart`                                    | Container [restart policy](https://docs.docker.com/engine/reference/run/#restart-policies---restart)<br/>(`always` or `unless-stopped` recommended)                                                                                                                                                                                                   |
-| `-verbose -hooks=/config/hooks.yml -hotreload` | [`webhook` parameters](https://github.com/adnanh/webhook/blob/master/docs/Webhook-Parameters.md); replace `hooks.yml` with the name of your JSON/YAML hook definition file, and add/modify/remove arguments to suit your needs<br/>(Can omit if using this exact configuration; otherwise, all parameters must be specified, not just those modified) |
+| `-verbose -hooks=/config/hooks.json -hotreload` | [`webhook` parameters](https://github.com/adnanh/webhook/blob/master/docs/Webhook-Parameters.md); replace `hooks.json` with the name of your JSON/YAML hook definition file, and add/modify/remove arguments to suit your needs<br/>(Can omit if using this exact configuration; otherwise, all parameters must be specified, not just those modified) |
 
 <a name="configuring_hooks"></a> 
 # Configuring Hooks
