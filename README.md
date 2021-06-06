@@ -8,9 +8,10 @@
 [![License](https://img.shields.io/github/license/heg0dmsk/webhook-docker?style=for-the-badge)](https://github.com/Heg0Dmsk/docker-webhook)
 
 
-A modified version of [`TheCatLady's webhook`](https://github.com/TheCatLady/docker-webhook) docker container based upon [`adnanh's webhook`](https://github.com/adnanh/webhook),   additionally containing the docker cli and docker compose. Befoe using this conatiner, please inform yourself about the advantages and risks of executing docker commands inside a docker conatainer and access the docker host via the Docker socket, for example [here](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) or [here](https://tomgregory.com/running-docker-in-docker-on-windows/).
+A modified version of [`TheCatLady's webhook`](https://github.com/TheCatLady/docker-webhook) docker container based upon [`adnanh's webhook`](https://github.com/adnanh/webhook),   additionally containing the docker cli and docker compose. 
 
 # Content
+- [Security Concerns](#security_concerns)
 - [How to Use](#how_to_use)
   - [Docker Compose](#how_to_use_docker_compose)
   - [Docker CLI](#how_to_use_docker_cli)
@@ -19,6 +20,12 @@ A modified version of [`TheCatLady's webhook`](https://github.com/TheCatLady/doc
   - [Docker CLI](#updating_docker_cli)
 - [Parameters](#parameters)
 - [Configuring Hooks](#configuring_hooks)
+
+<a name="security_concerns"></a> 
+# Security Concerns
+In order to run docker commands inside the container and actually execute them on the docker host, the docker socket of the host needs to be exposed. While this allows to execute docker commands (e. g. for a CI/CD workflow) triggered by a webhook, it also poses a security risk. The risk involves that a container which has access to the docker socket may be able to get root access to the host. In order to lessen this security threat a Docker Socket Proxy can be used (e. g. [Tecnativa's Docker Socket Proxy](https://github.com/Tecnativa/docker-socket-proxy)).
+
+Also, if you further want to inform yourself about the advantages and risks of executing docker commands inside a docker conatainer and access the docker host via the Docker socket, take a look for example at [this post](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) from Jérôme Petazzoni or [this post](https://tomgregory.com/running-docker-in-docker-on-windows/) from Tom Gregory.
 
 <a name="how_to_use"></a> 
 # How to use
