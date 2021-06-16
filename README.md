@@ -5,7 +5,7 @@
 [![Image Size](https://img.shields.io/docker/image-size/heg0dmsk/webhook-docker/latest?style=for-the-badge&logoColor=white&logo=docker)](https://hub.docker.com/r/heg0dmsk/webhook-docker)
 [![Pulls](https://img.shields.io/docker/pulls/heg0dmsk/webhook-docker.svg?style=for-the-badge)](https://hub.docker.com/r/heg0dmsk/webhook-docker)
 [![Version](https://img.shields.io/docker/v/heg0dmsk/webhook-docker?style=for-the-badge)](https://hub.docker.com/r/heg0dmsk/webhook-docker)
-[![License](https://img.shields.io/github/license/heg0dmsk/webhook-docker?style=for-the-badge)](https://github.com/Heg0Dmsk/docker-webhook)
+[![License](https://img.shields.io/badge/LICENSE-MIT-blue?style=for-the-badge)](https://github.com/Heg0Dmsk/docker-webhook)
 
 
 A modified version of [`TheCatLady's webhook`](https://github.com/TheCatLady/docker-webhook) docker container based upon [`adnanh's webhook`](https://github.com/adnanh/webhook),   additionally containing the docker cli and docker compose. 
