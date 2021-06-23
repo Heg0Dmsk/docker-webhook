@@ -107,13 +107,15 @@ docker image prune
 
 The container image is configured using the following parameters passed at runtime:
 
-| Parameter                                      | Function                                                                                                                                                                                                                                                                                                                                              |
-| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `-v /path/to/appdata/config:/config:ro`        | Container data directory (mounted as read-only); your JSON/YAML hook definition file should be placed in this folder<br/>(Replace `/path/to/appdata/config` with the desired path on your host)
-| `-v /var/run/docker.sock:/var/run/docker.sock` | Exposing the docker socket, needed to access the docker host    |
-| `-p 9000:9000`                                 | Expose port `9000`<br/>(Necessary unless only accessing `webhook` via other containers in the same Docker network)                                                                                                                                                                                                                                    |
-| `--restart`                                    | Container [restart policy](https://docs.docker.com/engine/reference/run/#restart-policies---restart)<br/>(`always` or `unless-stopped` recommended)                                                                                                                                                                                                   |
-| `-verbose -hooks=/config/hooks.json -hotreload` | [`webhook` parameters](https://github.com/adnanh/webhook/blob/master/docs/Webhook-Parameters.md); replace `hooks.json` with the name of your JSON/YAML hook definition file, and add/modify/remove arguments to suit your needs<br/>(Can omit if using this exact configuration; otherwise, all parameters must be specified, not just those modified) |
+| Parameter | Symbol | Example| Description                                                                                                           |
+| ----------|--------|--------| ---------------------------------------------------------------------------------------------------------------------------- |
+| Volume |-v |`/path/to/appdata/config:/config:ro`        | Container data directory (mounted as read-only); your JSON/YAML hook definition file should be placed in this folder<br/>    (Replace `/path/to/appdata/config` with the desired path on your host)                                                               |
+| Volume | -v | `/var/run/docker.sock:/var/run/docker.sock` | Exposing the docker socket, needed to access the docker host                                                      |
+| Port |-p |`9000:9000`                        | Expose port `9000`<br/>(Necessary unless only accessing `webhook` via other containers in the same Docker network)           |
+| Restart Policy | --restart | recommended `always` | Container [restart policy](https://docs.docker.com/engine/reference/run/#restart-policies---restart) |
+| Command | | `-verbose -hooks=/config/hooks.json -hotreload` | [`webhook` parameters](https://github.com/adnanh/webhook/blob/master/docs/Webhook-Parameters.md); replace `hooks.json` with the name of your JSON/YAML hook definition file, and add/modify/remove arguments to suit your needs<br/>(Can omit if using this exact configuration; otherwise, all parameters must be specified, not just those modified)         |
+| environment | -e | `TZ=Europe/Berlin` | Specifcies timezone of the container, Look up timezones [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)   |
+
 
 <a name="configuring_hooks"></a> 
 # Configuring Hooks
