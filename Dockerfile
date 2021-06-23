@@ -11,11 +11,11 @@ RUN         curl -#L -o webhook.tar.gz https://api.github.com/repos/adnanh/webho
             rm -rf /go
 
 FROM        alpine:3.14.0
-RUN         apk add --update --no-cache docker-cli docker-compose
+RUN         apk add --update --no-cache docker-cli docker-compose curl tini tzdata
 COPY        --from=BUILD_IMAGE /usr/local/bin/webhook /usr/local/bin/webhook
 WORKDIR     /config
 
 EXPOSE      9000
 HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:9000/ || exit 1
-ENTRYPOINT  ["/usr/local/bin/webhook"]
+ENTRYPOINT  ["/sbin/tini", "--", "/usr/local/bin/webhook"]
 CMD         ["-verbose", "-hotreload", "-hooks=hooks.json"]
