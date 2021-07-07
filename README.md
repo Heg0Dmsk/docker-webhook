@@ -10,14 +10,11 @@
 
 A modified version of [`TheCatLady's webhook`](https://github.com/TheCatLady/docker-webhook) docker container based upon [`adnanh's webhook`](https://github.com/adnanh/webhook),   additionally containing the docker cli and docker compose. 
 
-# Content
+# Table of Contents
 - [Security Concerns](#security_concerns)
 - [How to Use](#how_to_use)
   - [Docker Compose](#how_to_use_docker_compose)
-  - [Docker CLI](#how_to_use_docker_cli)
-- [Updating](#updating)
-  - [Docker Compose](#updating_docker_compose)
-  - [Docker CLI](#updating_docker_cli)
+  - [Updating](#updating)
 - [Parameters](#parameters)
 - [Configuring Hooks](#configuring_hooks)
 
@@ -33,7 +30,7 @@ Also, if you further want to inform yourself about the advantages and risks of e
 Docker images are available from [Docker Hub](https://hub.docker.com/r/heg0dmsk/webhook-docker) and [GitHub Container Registry (GHCR)](https://github.com/users/heg0dmsk/packages/container/package/webhook-docker).
 
 <a name="how_to_use_docker_compose"></a> 
-## Docker Compose (recommended) 
+## Docker Compose (example)
 
 Add the following volume and service definitions to a `docker-compose.yml` file:
 
@@ -43,6 +40,8 @@ services:
     image: heg0dmsk/webhook-docker
     container_name: webhook
     command: -verbose -hooks=hooks.json -hotreload
+        environment:
+      - TZ=Europe/Berlin #optional
     volumes:
       - /path/to/appdata/config:/config:ro
       # exposing the docker socket, needed to access the docker host
@@ -58,47 +57,19 @@ Then, run the following command from the directory containing your `docker-compo
 docker-compose up -d
 ```
 
-<a name="how_to_use_docker_cli"></a> 
-## Docker CLI
-
-Run the following command to create the container:
-
-```bash
-docker run -d \
-  --name=webhook \
-  -v /path/to/appdata/config:/config:ro \
-  -v /var/run/docker.sock:/var/run/docker.sock `#exposing the docker socket, needed to access the docker host` \
-  -p 9000:9000 \
-  --restart always \
-  heg0dmsk/webhook-docker \
-  -verbose -hooks=hooks.json -hotreload
-```
-
 <a name="updating"></a> 
 # Updating
 
-The process to update the container when a new image is available is dependent on how you set it up initially.
-
-<a name="updating_docker_compose"></a>
-## Docker Compose
-
-Run the following commands from the directory containing your `docker-compose.yml` file:
+The process to update the container when a new image is available is dependent on how you set it up initially. If you initially used Docker Compose, run the following commands from the directory containing your `docker-compose.yml` file: 
 
 ```bash
-docker-compose pull webhook
+# Pull latest version of the images specified in the docker-compose.yml file
+docker-compose pull 
+
+# Redeploy
 docker-compose up -d
-docker image prune
-```
 
-<a name="updating_docker_cli"></a> 
-## Docker CLI
-
-Run the commands below, followed by your original `docker run` command:
-
-```bash
-docker stop webhook
-docker rm webhook
-docker pull heg0dmsk/webhook-docker
+# Remove old dangling Images
 docker image prune
 ```
 
