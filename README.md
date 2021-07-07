@@ -7,8 +7,8 @@
 [![Version](https://img.shields.io/docker/v/heg0dmsk/webhook-docker?style=for-the-badge)](https://hub.docker.com/r/heg0dmsk/webhook-docker)
 [![License](https://img.shields.io/badge/LICENSE-MIT-blue?style=for-the-badge)](https://github.com/Heg0Dmsk/docker-webhook)
 
-
-A modified version of [`TheCatLady's webhook`](https://github.com/TheCatLady/docker-webhook) docker container based upon [`adnanh's webhook`](https://github.com/adnanh/webhook),   additionally containing the docker cli and docker compose. 
+A light webhook image of [`adnanh's webhook`](https://github.com/adnanh/webhook) which is able to access the Docker host and control containers.
+This image is based upon [`TheCatLady's webhook`](https://github.com/TheCatLady/docker-webhook) docker image. In addition to some minor tweaks this image has access to the docker host and therefore is able to execute Docker commands on the host. This is possible by exposing the docker socket and adding packets for docker compose and the docker cli.
 
 # Table of Contents
 - [Security Concerns](#security_concerns)
