@@ -10,7 +10,7 @@ RUN         curl -#L -o webhook.tar.gz https://api.github.com/repos/adnanh/webho
             rm -rf /var/cache/apk/* && \
             rm -rf /go
 
-FROM        alpine:3.15.2
+FROM        alpine:3.15.3
 RUN         apk add --update --no-cache docker-cli docker-compose curl tini tzdata
 COPY        --from=BUILD_IMAGE /usr/local/bin/webhook /usr/local/bin/webhook
 WORKDIR     /config
