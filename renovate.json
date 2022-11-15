@@ -1,6 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["Dockerfile"],
+      "labels": ["Docker"]
+    }
+  ],
+  "prHourlyLimit": 25,
   "extends": [
-    "config:base"
+    "config:base", ":dependencyDashboard"
   ]
 }
