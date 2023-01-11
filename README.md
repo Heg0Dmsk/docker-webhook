@@ -1,4 +1,4 @@
-[![CD Status](https://img.shields.io/github/workflow/status/Heg0Dmsk/docker-webhook/Build%20And%20Push%20Docker%20Images?label=Continious%20Deployment&style=for-the-badge)](https://github.com/Heg0Dmsk/docker-webhook)
+[![CD Status](https://img.shields.io/github/actions/workflow/status/Heg0Dmsk/docker-webhook/docker-build-and-push.yml?label=Continious%20Deployment&style=for-the-badge)](https://github.com/Heg0Dmsk/docker-webhook)
 [![Last Commit](https://img.shields.io/github/last-commit/Heg0Dmsk/docker-webhook?style=for-the-badge&logoColor=white&logo=github)](https://github.com/Heg0Dmsk/docker-webhook)
 [![Pull Requests](https://img.shields.io/github/issues-pr/heg0dmsk/webhook-docker?style=for-the-badge)](https://github.com/Heg0Dmsk/docker-webhook)
 [![Repo Size](https://img.shields.io/github/repo-size/heg0dmsk/webhook-docker?style=for-the-badge)](https://github.com/Heg0Dmsk/docker-webhook)
